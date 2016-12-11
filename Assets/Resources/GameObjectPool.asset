@@ -16,3 +16,15 @@ MonoBehaviour:
     Object: 0
     prefab: {fileID: 1781110508774170, guid: 7f1d415cb5bb043bebf50b34e10b5a8c, type: 2}
     size: 100
+  - PoolName: Sparks
+    Object: 1
+    prefab: {fileID: 1899643758807134, guid: 73485dce997df489580f2893ec911fa8, type: 2}
+    size: 30
+  - PoolName: Smoke
+    Object: 2
+    prefab: {fileID: 1734006271465190, guid: 83dac70800110467aae302b790f2d6d4, type: 2}
+    size: 5
+  - PoolName: Explosion
+    Object: 3
+    prefab: {fileID: 1797706946019062, guid: 10a56f8e44d704028805f418fa4a0eb1, type: 2}
+    size: 5
