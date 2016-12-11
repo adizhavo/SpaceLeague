@@ -17,7 +17,7 @@ namespace SpaceLeague.Ship.Player
             AimSensibility /= 80f;
             #endif
 
-            Init(movementSpeed, 0.62f, shipCamera);
+            Init(movementSpeed, 0.7f, shipCamera);
         }
 
         public void Init(float aimSensibility, float movementSpeed, float rotationAngleStepPercentage, Transform shipCamera = null)
