@@ -47,11 +47,13 @@ namespace SpaceLeague.Ship.Enemy
             journeyTickCounter = 0f;
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             UpdateTargetPoint();
             UpdateTimers();
-            CalculateAimDirection();
+            CalculateAimDirection(currentTargetPoint, 2f); // this magic number can be the difficulty of the AI
             TryToFire();
 
             #if UNITY_EDITOR
@@ -96,16 +98,6 @@ namespace SpaceLeague.Ship.Enemy
                 battleTickCounter += Time.deltaTime / pickedBattleTime;
                 if (battleTickCounter > 1f) EnterFreeRoamingMode();
             }
-        }
-
-        private void CalculateAimDirection()
-        {
-            Vector3 projection = Vector3.ProjectOnPlane(currentTargetPoint - ship.position, ship.forward);
-            Vector3 localProjection = ship.InverseTransformPoint(ship.position + projection);
-           
-            float angle = Vector3.Angle(targetPoint - ship.position, GlobalDirection - ship.position);
-            if (angle < 2f) AimDirection = Vector3.Lerp(AimDirection, Vector3.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
-            else AimDirection = Vector3.Lerp(AimDirection, localProjection, Time.deltaTime * 2);
         }
 
         protected override void DisplayLogs()

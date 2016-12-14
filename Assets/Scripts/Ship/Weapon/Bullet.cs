@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SpaceLeague.Pooling;
 
 namespace SpaceLeague.Ship.Weapon
 {
@@ -57,6 +58,8 @@ namespace SpaceLeague.Ship.Weapon
 
             Ship s = tr.GetComponent<Ship>();
             if (s != null) s.Damaged(fireSource, damage);
+
+            PoolProvider.Instance.RequestGameObject(PooledObject.Sparks).transform.position = transform.position;
 
             gameObject.SetActive(false);
         }

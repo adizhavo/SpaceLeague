@@ -3,6 +3,9 @@ namespace SpaceLeague.Pooling
 {
     public enum PooledObject
     {
-    	Bullet = 0
+    	Bullet = 0,
+        Sparks = 1,
+        Smoke = 2,
+        Explosion = 3
     }
 }

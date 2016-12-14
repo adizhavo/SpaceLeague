@@ -11,6 +11,8 @@ namespace SpaceLeague.Ship.Player.Inputs
         [SerializeField] private PlayerShip playerShip;
         [SerializeField] private ShipMainCannon mainWeapon;
 
+        public Transform target;
+
     	private void Update () 
         {
             UpdateControls();
@@ -21,13 +23,17 @@ namespace SpaceLeague.Ship.Player.Inputs
             #if UNITY_EDITOR
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
+
+            if (playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.LocalMoveDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.AimSensibility;        
+            else { }
+
             if (Input.GetKey(KeyCode.Space)) mainWeapon.OpenFire();
-            playerShip.AimDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.AimSensibility;
+            if (Input.GetKey(KeyCode.LeftControl) && playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.EnterDogFight(target);
             #else
             MapTouches(); 
             if (fireTouchIndex != -1) mainWeapon.OpenFire();
-            if (touchPadIndex != -1) playerShip.AimDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.AimSensibility;
-            else playerShip.AimDirection = Vector2.Lerp(playerShip.AimDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
+            if (touchPadIndex != -1) playerShip.LocalMoveDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.AimSensibility;
+            else playerShip.LocalMoveDirection = Vector2.Lerp(playerShip.LocalMoveDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
             #endif
         }
 
