@@ -6,8 +6,8 @@ namespace SpaceLeague.Ship.Player
 {
     public class PlayerShip : Ship 
     {    
-        [SerializeField] private RectTransform AimUI;
-        [HideInInspector] public float AimSensibility = 1f;
+        [SerializeField] private RectTransform aimUI;
+        [HideInInspector] public float aimSensibility = 1f;
 
         public Transform targetShip;
 
@@ -22,7 +22,7 @@ namespace SpaceLeague.Ship.Player
 
         public void Init(float aimSensibility, float movementSpeed, float rotationAngleStepPercentage, Transform shipCamera = null)
         {
-            this.AimSensibility = aimSensibility > 0f ? aimSensibility : 0f;
+            this.aimSensibility = aimSensibility > 0f ? aimSensibility : 0f;
             base.Init(movementSpeed, rotationAngleStepPercentage, shipCamera);
         }
 
@@ -47,7 +47,7 @@ namespace SpaceLeague.Ship.Player
         private void PositionAimUI()
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(GlobalDirection);
-            AimUI.position = screenPos;
+            aimUI.position = screenPos;
         }
 
         public override void Damaged(Transform attackingShip, float damage)

@@ -11,10 +11,10 @@ namespace SpaceLeague.Ship
         [SerializeField] public float maxDogFightFiller;
         [SerializeField] protected float dogFightPointsPerHit;
 
-        [HideInInspector] public Vector2 LocalMoveDirection;
-        [HideInInspector] public bool readyForDogFight
+        [HideInInspector] public Vector2 localMoveDirection;
+        [HideInInspector] public bool IsReadyForDogFight
         {
-            get { return currentDogFightFiller + Mathf.Epsilon >= maxDogFightFiller; }
+            get { return currentDogFightFiller + Mathf.Epsilon >= maxDogFightFiller && IsPositionedForDogFight; }
         }
 
         protected float rotationAngleStepPercentage = 0.6f;
@@ -26,8 +26,10 @@ namespace SpaceLeague.Ship
             DogFight
         }
 
-        public ShipFightMode currentFightMode;
-        protected Transform chaisedShip;
+        [HideInInspector] public ShipFightMode currentFightMode;
+        [HideInInspector] public bool IsPositionedForDogFight = false;
+        [HideInInspector] public Transform ShipToDogFight;
+
 
         private float currentCameraDistance;
         private Vector3 currentCameraOffset;
@@ -37,10 +39,10 @@ namespace SpaceLeague.Ship
         {
             get 
             {
-                LocalMoveDirection = Vector3.ClampMagnitude(LocalMoveDirection, ShipConfig.MaxAimDirectionMagnitude);
+                localMoveDirection = Vector3.ClampMagnitude(localMoveDirection, ShipConfig.MaxAimDirectionMagnitude);
                 return ship.position + Vector3.MoveTowards(
                     ship.forward * ShipConfig.ShipFieldOfView, 
-                    ship.TransformDirection(LocalMoveDirection), 
+                    ship.TransformDirection(localMoveDirection), 
                     ShipConfig.ShipFieldOfView * rotationAngleStepPercentage);
             }
         }
@@ -67,10 +69,10 @@ namespace SpaceLeague.Ship
 
         private void UpdateRenderDirection()
         {
-            int sign = -1 * (int)Mathf.Sign(LocalMoveDirection.x);
+            int sign = -1 * (int)Mathf.Sign(localMoveDirection.x);
             float currentAngle = shipRender.localEulerAngles.z;
             if (currentAngle > 180f) currentAngle -= 360f;
-            float rotationPercentage = Mathf.Abs(LocalMoveDirection.x) / ShipConfig.MaxAimDirectionMagnitude;
+            float rotationPercentage = Mathf.Abs(localMoveDirection.x) / ShipConfig.MaxAimDirectionMagnitude;
             float lerpedAngle = Mathf.Lerp(0f, ShipConfig.RenderMaxRotationAngle * sign, rotationPercentage);
             shipRender.localEulerAngles = new Vector3(0f, 0f, lerpedAngle);
         }
@@ -101,13 +103,12 @@ namespace SpaceLeague.Ship
 
         protected virtual void DisplayLogs()
         {
-            Debug.DrawLine(ship.position, ship.position + ship.TransformDirection(LocalMoveDirection), Color.red);
+            Debug.DrawLine(ship.position, ship.position + ship.TransformDirection(localMoveDirection), Color.red);
             Debug.DrawLine(ship.position, GlobalDirection);
         }
 
-        public void EnterDogFight(Transform chaisedShip)
+        public void EnterDogFight()
         {
-            this.chaisedShip = chaisedShip;
             currentFightMode = ShipFightMode.DogFight;
             dogFightTimeElapse = 0f;
 
@@ -115,15 +116,15 @@ namespace SpaceLeague.Ship
 
         public void ExitDogFightMode()
         {
-            chaisedShip = null;
             currentFightMode = ShipFightMode.Normal;
         }
 
         protected virtual void Update()
         {
+            ShipToDogFight = LookForShipToDogFight();
             if (currentFightMode.Equals(ShipFightMode.DogFight))
             {
-                CalculateAimDirection(chaisedShip.position + (-1 * chaisedShip.forward *  ShipConfig.DogFightDistance) , 2f);
+                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance) , 2f);
 
                 dogFightTimeElapse += Time.deltaTime;
                 if (dogFightTimeElapse > ShipConfig.DogFightTime)
@@ -139,14 +140,48 @@ namespace SpaceLeague.Ship
             Vector3 localProjection = ship.InverseTransformPoint(ship.position + projection);
 
             float angle = Vector3.Angle(targetTr - ship.position, GlobalDirection - ship.position);
-            if (angle < 2f) LocalMoveDirection = Vector3.Lerp(LocalMoveDirection, Vector3.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
-            else LocalMoveDirection = Vector3.Lerp(LocalMoveDirection, localProjection, Time.deltaTime * reactionSpeed);
+            if (angle < 2f) localMoveDirection = Vector3.Lerp(localMoveDirection, Vector3.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
+            else localMoveDirection = Vector3.Lerp(localMoveDirection, localProjection, Time.deltaTime * reactionSpeed);
         }
 
         public void AddDogFightPoints()
         {
             currentDogFightFiller += dogFightPointsPerHit;
             if (currentDogFightFiller > maxDogFightFiller) currentDogFightFiller = maxDogFightFiller;
+        }
+
+        protected Transform LookForShipToDogFight()
+        {
+            Ship[] ships = GameObject.FindObjectsOfType<Ship>();
+            foreach(Ship s in ships)
+                if (s.Equals(this)) continue;
+                else if(IsInPositionOfDogFight(s.ship)) return s.ship;
+
+            return null;
+        }
+
+        protected bool IsInPositionOfDogFight(Transform tr)
+        {
+            if (tr == null) return false;
+
+            Vector3 targetProjection = Vector3.ProjectOnPlane(tr.position - ship.position, ship.forward);
+            Vector2 targetLocalProjection = ship.InverseTransformPoint(targetProjection);
+            Vector3 globalDirectionProjection = Vector3.ProjectOnPlane(GlobalDirection - ship.position, ship.forward);
+            Vector2 globalDirectionLocalProjection = ship.InverseTransformPoint(globalDirectionProjection);
+
+            Rect aimRect = new Rect(
+                globalDirectionLocalProjection.x - 3f,
+                globalDirectionLocalProjection.y - 3f, 
+                6f, 
+                6f);
+
+            bool isInsideRect = aimRect.Contains(targetLocalProjection);
+
+            Vector3 targetVerticalProjection = Vector3.ProjectOnPlane(tr.position - ship.position, ship.up);
+            Vector3 targetVerticalLocalProjection = ship.InverseTransformPoint(ship.position + targetVerticalProjection);
+            int sign = (int)Mathf.Sign(targetVerticalLocalProjection.z);
+            IsPositionedForDogFight = sign > 0 && isInsideRect;
+            return IsPositionedForDogFight;
         }
 
         public abstract void Damaged(Transform attackingShip, float damage);

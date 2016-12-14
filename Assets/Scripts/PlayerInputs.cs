@@ -24,11 +24,11 @@ namespace SpaceLeague.Ship.Player.Inputs
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            if (playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.LocalMoveDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.AimSensibility;        
+            if (playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.localMoveDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.aimSensibility;        
             else { }
 
             if (Input.GetKey(KeyCode.Space)) mainWeapon.OpenFire();
-            if (Input.GetKey(KeyCode.LeftControl) && playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.EnterDogFight(target);
+//            if (Input.GetKey(KeyCode.LeftControl) && playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.EnterDogFight(target);
             #else
             MapTouches(); 
             if (fireTouchIndex != -1) mainWeapon.OpenFire();
