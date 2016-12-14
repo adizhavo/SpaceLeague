@@ -672,7 +672,10 @@ MonoBehaviour:
   shipRender: {fileID: 4001477505460448}
   shipCamera: {fileID: 0}
   movementSpeed: 12
-  AimDirection: {x: 0, y: 0}
+  maxDogFightFiller: 1
+  dogFightPointsPerHit: 0.1
+  LocalMoveDirection: {x: 0, y: 0}
+  currentFightMode: 0
   AimUI: {fileID: 0}
   AimSensibility: 1
   targetShip: {fileID: 0}
@@ -704,6 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShip: {fileID: 114265231763633532}
   mainWeapon: {fileID: 114278220478307228}
+  target: {fileID: 0}
 --- !u!198 &198748913062300814
 ParticleSystem:
   m_ObjectHideFlags: 1
