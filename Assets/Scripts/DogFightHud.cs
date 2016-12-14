@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using SpaceLeague.Ship;
 using SpaceLeague.Ship.Player;
 
 namespace SpaceLeague.UI
@@ -25,7 +26,11 @@ namespace SpaceLeague.UI
             }
 
             dogFightFiller.fillAmount = playerShip.currentDogFightFiller / playerShip.maxDogFightFiller;
-            dogFightButton.interactable = playerShip.IsReadyForDogFight;
+            dogFightButton.interactable = playerShip.IsReadyForDogFight || playerShip.currentFlyMode.Equals(ShipFlyMode.DogFight);
+
+            #if UNITY_EDITOR
+            if (playerShip.IsReadyForDogFight) playerShip.EnterDogFight();
+            #endif
         }
 
         private void ReachPlayerShip()
@@ -35,7 +40,7 @@ namespace SpaceLeague.UI
 
         private void TriggerDogFight()
         {
-            
+            playerShip.EnterDogFight();
         }
     }
 }

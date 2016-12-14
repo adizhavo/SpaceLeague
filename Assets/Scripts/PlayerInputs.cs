@@ -24,16 +24,15 @@ namespace SpaceLeague.Ship.Player.Inputs
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            if (playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.localMoveDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.aimSensibility;        
+            if (playerShip.currentFlyMode.Equals(ShipFlyMode.Normal)) playerShip.localMoveDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.aimSensibility;        
             else { }
-
+             
             if (Input.GetKey(KeyCode.Space)) mainWeapon.OpenFire();
-//            if (Input.GetKey(KeyCode.LeftControl) && playerShip.currentFightMode.Equals(Ship.ShipFightMode.Normal)) playerShip.EnterDogFight(target);
             #else
             MapTouches(); 
             if (fireTouchIndex != -1) mainWeapon.OpenFire();
-            if (touchPadIndex != -1) playerShip.LocalMoveDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.AimSensibility;
-            else playerShip.LocalMoveDirection = Vector2.Lerp(playerShip.LocalMoveDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
+            if (touchPadIndex != -1) playerShip.localMoveDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.aimSensibility;
+            else playerShip.localMoveDirection = Vector2.Lerp(playerShip.localMoveDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
             #endif
         }
 

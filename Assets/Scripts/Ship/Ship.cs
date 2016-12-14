@@ -2,6 +2,12 @@
 
 namespace SpaceLeague.Ship
 {
+    public enum ShipFlyMode
+    {
+        Normal,
+        DogFight
+    }
+
     public abstract class Ship : MonoBehaviour
     {
         [SerializeField] protected Transform ship;
@@ -14,19 +20,13 @@ namespace SpaceLeague.Ship
         [HideInInspector] public Vector2 localMoveDirection;
         [HideInInspector] public bool IsReadyForDogFight
         {
-            get { return currentDogFightFiller + Mathf.Epsilon >= maxDogFightFiller && IsPositionedForDogFight; }
+            get { return currentDogFightFiller + Mathf.Epsilon >= maxDogFightFiller && IsPositionedForDogFight && ShipToDogFight != null; }
         }
 
         protected float rotationAngleStepPercentage = 0.6f;
         [HideInInspector] public float currentDogFightFiller = 0;
 
-        public enum ShipFightMode
-        {
-            Normal,
-            DogFight
-        }
-
-        [HideInInspector] public ShipFightMode currentFightMode;
+        [HideInInspector] public ShipFlyMode currentFlyMode;
         [HideInInspector] public bool IsPositionedForDogFight = false;
         [HideInInspector] public Transform ShipToDogFight;
 
@@ -49,7 +49,7 @@ namespace SpaceLeague.Ship
 
         private void Awake()
         {
-            currentFightMode = ShipFightMode.Normal;
+            currentFlyMode = ShipFlyMode.Normal;
             currentCameraOffset = ShipConfig.CameraPositionOffset;
             currentCameraDistance = ShipConfig.CameraDistance;
         }
@@ -87,10 +87,10 @@ namespace SpaceLeague.Ship
             if (shipCamera == null) return;
 
             currentCameraDistance = Mathf.Lerp(currentCameraDistance, 
-                currentFightMode.Equals(ShipFightMode.Normal) ? ShipConfig.CameraDistance : ShipConfig.DogFightCameraDistance,
+                currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraDistance : ShipConfig.DogFightCameraDistance,
                 Time.deltaTime * 3f);
             currentCameraOffset = Vector3.Lerp(currentCameraOffset, 
-                currentFightMode.Equals(ShipFightMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset,
+                currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset,
                 Time.deltaTime * 3f);
 
             shipCamera.position = Vector3.Lerp(
@@ -109,29 +109,31 @@ namespace SpaceLeague.Ship
 
         public void EnterDogFight()
         {
-            currentFightMode = ShipFightMode.DogFight;
+            currentFlyMode = ShipFlyMode.DogFight;
             dogFightTimeElapse = 0f;
 
         }
 
         public void ExitDogFightMode()
         {
-            currentFightMode = ShipFightMode.Normal;
+            currentFlyMode = ShipFlyMode.Normal;
         }
 
         protected virtual void Update()
         {
-            ShipToDogFight = LookForShipToDogFight();
-            if (currentFightMode.Equals(ShipFightMode.DogFight))
+            if (currentFlyMode.Equals(ShipFlyMode.DogFight) && ShipToDogFight != null)
             {
                 CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance) , 2f);
 
                 dogFightTimeElapse += Time.deltaTime;
-                if (dogFightTimeElapse > ShipConfig.DogFightTime)
+                currentDogFightFiller = maxDogFightFiller - dogFightTimeElapse;
+                if (currentDogFightFiller < 0)
                 {
+                    currentDogFightFiller = 0f;
                     ExitDogFightMode();
                 }
             }
+            else ShipToDogFight = LookForShipToDogFight();
         }
 
         protected void CalculateAimDirection(Vector3 targetTr, float reactionSpeed)
@@ -146,6 +148,8 @@ namespace SpaceLeague.Ship
 
         public void AddDogFightPoints()
         {
+            if (currentFlyMode.Equals(ShipFlyMode.DogFight)) return;
+
             currentDogFightFiller += dogFightPointsPerHit;
             if (currentDogFightFiller > maxDogFightFiller) currentDogFightFiller = maxDogFightFiller;
         }

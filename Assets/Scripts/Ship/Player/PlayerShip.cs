@@ -14,7 +14,7 @@ namespace SpaceLeague.Ship.Player
         private void Start()
         {
             #if !UNITY_EDITOR
-            AimSensibility /= 80f;
+            aimSensibility /= 90f;
             #endif
 
             Init(movementSpeed, 0.7f, shipCamera);

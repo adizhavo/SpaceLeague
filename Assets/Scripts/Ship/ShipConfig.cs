@@ -19,7 +19,6 @@ namespace SpaceLeague.Ship
 
         public const float CameraLerpSpeed = 3f;
 
-        public const float DogFightTime = 10f;
         public const float DogFightDistance = 4f;
     }
 }
