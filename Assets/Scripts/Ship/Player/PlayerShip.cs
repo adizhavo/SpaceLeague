@@ -26,8 +26,10 @@ namespace SpaceLeague.Ship.Player
             base.Init(movementSpeed, rotationAngleStepPercentage, shipCamera);
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
+
             PositionAimUI();
 
             #if PLAYER_SHIP_LOG
