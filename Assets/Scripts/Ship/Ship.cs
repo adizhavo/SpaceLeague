@@ -8,10 +8,17 @@ namespace SpaceLeague.Ship
         [SerializeField] protected Transform shipRender;
         [SerializeField] protected Transform shipCamera;
         [SerializeField] protected float movementSpeed;
+        [SerializeField] public float maxDogFightFiller;
+        [SerializeField] protected float dogFightPointsPerHit;
 
         [HideInInspector] public Vector2 LocalMoveDirection;
+        [HideInInspector] public bool readyForDogFight
+        {
+            get { return currentDogFightFiller + Mathf.Epsilon >= maxDogFightFiller; }
+        }
 
         protected float rotationAngleStepPercentage = 0.6f;
+        [HideInInspector] public float currentDogFightFiller = 0;
 
         public enum ShipFightMode
         {
@@ -116,7 +123,7 @@ namespace SpaceLeague.Ship
         {
             if (currentFightMode.Equals(ShipFightMode.DogFight))
             {
-                CalculateAimDirection(chaisedShip.position, 2f);
+                CalculateAimDirection(chaisedShip.position + (-1 * chaisedShip.forward *  ShipConfig.DogFightDistance) , 2f);
 
                 dogFightTimeElapse += Time.deltaTime;
                 if (dogFightTimeElapse > ShipConfig.DogFightTime)
@@ -134,6 +141,12 @@ namespace SpaceLeague.Ship
             float angle = Vector3.Angle(targetTr - ship.position, GlobalDirection - ship.position);
             if (angle < 2f) LocalMoveDirection = Vector3.Lerp(LocalMoveDirection, Vector3.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
             else LocalMoveDirection = Vector3.Lerp(LocalMoveDirection, localProjection, Time.deltaTime * reactionSpeed);
+        }
+
+        public void AddDogFightPoints()
+        {
+            currentDogFightFiller += dogFightPointsPerHit;
+            if (currentDogFightFiller > maxDogFightFiller) currentDogFightFiller = maxDogFightFiller;
         }
 
         public abstract void Damaged(Transform attackingShip, float damage);
