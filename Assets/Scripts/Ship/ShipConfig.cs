@@ -16,8 +16,8 @@ namespace SpaceLeague.Ship
         public static readonly Vector3 CameraPositionOffset = new Vector3(0f, 3.5f, 0f);
         public const float CameraDistance = 9f;
 
-        public static readonly Vector3 DogFightCameraPositionOffset = new Vector3(1f, 2f, 0f);
-        public const float DogFightCameraDistance = 1f;
+        public static readonly Vector3 DogFightCameraPositionOffset = new Vector3(2f, 2f, 0f);
+        public const float DogFightCameraDistance = 2f;
 
         public const float CameraLerpSpeed = 3f;
 

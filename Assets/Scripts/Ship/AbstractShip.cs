@@ -119,9 +119,13 @@ namespace SpaceLeague.Ship
                 currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset,
                 Time.deltaTime * 3f);
 
+            Vector3 positionOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? Vector3.zero : ship.InverseTransformDirection(Vector3.ProjectOnPlane(ShipToDogFight.position - ship.position, ship.forward));
+            currentCameraOffset.x *= Mathf.Sign(positionOffset.x);
+            currentCameraOffset.y *= Mathf.Sign(positionOffset.y);
+
             shipCamera.position = Vector3.Lerp(
                 shipCamera.position,
-                ship.position - ship.forward * currentCameraDistance + ship.TransformDirection(currentCameraOffset),
+                ship.position - ship.forward * currentCameraDistance + ship.TransformDirection(currentCameraOffset) ,
                 Time.deltaTime * ShipConfig.CameraLerpSpeed);
 
             shipCamera.LookAt(GlobalDirection, ship.up);
