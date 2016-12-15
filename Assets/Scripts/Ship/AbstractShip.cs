@@ -8,7 +8,7 @@ namespace SpaceLeague.Ship
         DogFight
     }
 
-    public abstract class Ship : MonoBehaviour
+    public abstract class AbstractShip : MonoBehaviour
     {
         [SerializeField] protected Transform ship;
         [SerializeField] protected Transform shipRender;
@@ -52,6 +52,16 @@ namespace SpaceLeague.Ship
             currentFlyMode = ShipFlyMode.Normal;
             currentCameraOffset = ShipConfig.CameraPositionOffset;
             currentCameraDistance = ShipConfig.CameraDistance;
+        }
+
+        private void OnEnable()
+        {
+            ShipUtils.RegisterShip(this);
+        }
+
+        private void OnDisable()
+        {
+            ShipUtils.UnRegisterShip(this);
         }
 
         public void Init(float movementSpeed, float rotationAngleStepPercentage, Transform shipCamera = null)
@@ -111,7 +121,6 @@ namespace SpaceLeague.Ship
         {
             currentFlyMode = ShipFlyMode.DogFight;
             dogFightTimeElapse = 0f;
-
         }
 
         public void ExitDogFightMode()
@@ -123,7 +132,7 @@ namespace SpaceLeague.Ship
         {
             if (currentFlyMode.Equals(ShipFlyMode.DogFight) && ShipToDogFight != null)
             {
-                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance) , 2f);
+                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance), 5f);
 
                 dogFightTimeElapse += Time.deltaTime;
                 currentDogFightFiller = maxDogFightFiller - dogFightTimeElapse;
@@ -133,7 +142,11 @@ namespace SpaceLeague.Ship
                     ExitDogFightMode();
                 }
             }
-            else ShipToDogFight = LookForShipToDogFight();
+            else
+            {
+                ShipToDogFight = ShipUtils.LookForShipToDogFight(this);
+                IsPositionedForDogFight = ShipToDogFight != null;
+            }
         }
 
         protected void CalculateAimDirection(Vector3 targetTr, float reactionSpeed)
@@ -152,40 +165,6 @@ namespace SpaceLeague.Ship
 
             currentDogFightFiller += dogFightPointsPerHit;
             if (currentDogFightFiller > maxDogFightFiller) currentDogFightFiller = maxDogFightFiller;
-        }
-
-        protected Transform LookForShipToDogFight()
-        {
-            Ship[] ships = GameObject.FindObjectsOfType<Ship>();
-            foreach(Ship s in ships)
-                if (s.Equals(this)) continue;
-                else if(IsInPositionOfDogFight(s.ship)) return s.ship;
-
-            return null;
-        }
-
-        protected bool IsInPositionOfDogFight(Transform tr)
-        {
-            if (tr == null) return false;
-
-            Vector3 targetProjection = Vector3.ProjectOnPlane(tr.position - ship.position, ship.forward);
-            Vector2 targetLocalProjection = ship.InverseTransformPoint(targetProjection);
-            Vector3 globalDirectionProjection = Vector3.ProjectOnPlane(GlobalDirection - ship.position, ship.forward);
-            Vector2 globalDirectionLocalProjection = ship.InverseTransformPoint(globalDirectionProjection);
-
-            Rect aimRect = new Rect(
-                globalDirectionLocalProjection.x - 3f,
-                globalDirectionLocalProjection.y - 3f, 
-                6f, 
-                6f);
-
-            bool isInsideRect = aimRect.Contains(targetLocalProjection);
-
-            Vector3 targetVerticalProjection = Vector3.ProjectOnPlane(tr.position - ship.position, ship.up);
-            Vector3 targetVerticalLocalProjection = ship.InverseTransformPoint(ship.position + targetVerticalProjection);
-            int sign = (int)Mathf.Sign(targetVerticalLocalProjection.z);
-            IsPositionedForDogFight = sign > 0 && isInsideRect;
-            return IsPositionedForDogFight;
         }
 
         public abstract void Damaged(Transform attackingShip, float damage);

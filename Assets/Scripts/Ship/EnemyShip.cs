@@ -4,7 +4,7 @@ using SpaceLeague.Ship.Weapon;
 
 namespace SpaceLeague.Ship.Enemy
 {
-    public class EnemyShip : Ship 
+    public class EnemyShip : AbstractShip 
     {
         [SerializeField] private Vector2 distanceFromPlayer;
         [SerializeField] private Vector2 freeRoamingTime;
@@ -54,6 +54,7 @@ namespace SpaceLeague.Ship.Enemy
             UpdateTargetPoint();
             UpdateTimers();
             CalculateAimDirection(currentTargetPoint, 2f); // this magic number can be the difficulty of the AI
+            UpdateShipDirection();
             TryToFire();
 
             #if UNITY_EDITOR
@@ -63,13 +64,12 @@ namespace SpaceLeague.Ship.Enemy
 
         private void FixedUpdate()
         {
-            UpdateShipDirection();
             MoveShipForward();
         }
 
         private void TryToFire()
         {
-            if (targetShip != null && IsTargetOnSight()) mainCannon.OpenFire();
+            if (targetShip != null && ShipUtils.IsTargetOnSight(targetShip, ship, GlobalDirection)) mainCannon.OpenFire();
         }
 
         private void UpdateFlyMode()
@@ -91,7 +91,11 @@ namespace SpaceLeague.Ship.Enemy
                 if (journeyTickCounter > 1f) ChooseJourneyPosition();
 
                 freeRoamingTickCounter += Time.deltaTime / pickedFreeRoamingTime;
-                if (freeRoamingTickCounter > 1f) ChooseTargetToFight();
+                if (freeRoamingTickCounter > 1f) 
+                {
+                    Transform t = ShipUtils.ChooseTargetToFightForAI(this);
+                    if (t != null) EnterBattleMode(t);
+                }
             }
             else if (currentMode.Equals(FlyModes.Battle))
             {
@@ -105,29 +109,6 @@ namespace SpaceLeague.Ship.Enemy
             base.DisplayLogs();
             Debug.DrawLine(transform.position, currentTargetPoint, Color.cyan);
             Debug.DrawLine(transform.position, targetPoint, Color.yellow);
-        }
-
-        protected bool IsTargetOnSight()
-        {
-            if (targetShip == null) return false;
-
-            Vector3 targetProjection = Vector3.ProjectOnPlane(targetShip.position - ship.position, ship.forward);
-            Vector2 targetLocalProjection = ship.InverseTransformPoint(targetProjection);
-            Vector3 globalDirectionProjection = Vector3.ProjectOnPlane(GlobalDirection - ship.position, ship.forward);
-            Vector2 globalDirectionLocalProjection = ship.InverseTransformPoint(globalDirectionProjection);
-
-            Rect aimRect = new Rect(
-                globalDirectionLocalProjection.x - 3f,
-                globalDirectionLocalProjection.y - 3f, 
-                6f, 
-                6f);
-
-            bool isInsideRect = aimRect.Contains(targetLocalProjection);
-
-            Vector3 targetVerticalProjection = Vector3.ProjectOnPlane(targetShip.position - ship.position, ship.up);
-            Vector3 targetVerticalLocalProjection = ship.InverseTransformPoint(ship.position + targetVerticalProjection);
-            int sign = (int)Mathf.Sign(targetVerticalLocalProjection.z);
-            return sign > 0 && isInsideRect;
         }
 
         public override void Damaged(Transform attackingShip, float damage)
@@ -161,30 +142,6 @@ namespace SpaceLeague.Ship.Enemy
             currentMode = FlyModes.Battle;
             pickedBattleTime = Random.Range(battleTime.x, battleTime.y);
             battleTickCounter = 0f;
-        }
-
-        private void ChooseTargetToFight()
-        {
-            Ship[] ships = GameObject.FindObjectsOfType<Ship>();
-            Ship closesShip = null;
-            float closesDistanceSoFar = Mathf.Infinity;
-            foreach(Ship s in ships)
-            {
-                if (s.Equals(this)) continue;
- 
-                if (closesShip == null) closesShip = s;
-                else
-                {
-                    float distance = Vector3.Distance(ship.position, s.transform.position);
-                    if (closesDistanceSoFar > distance)
-                    {
-                        closesDistanceSoFar = distance;
-                        closesShip = s;
-                    }
-                }
-            }
-
-            if (closesShip != null) EnterBattleMode(closesShip.transform);
         }
     }
 }

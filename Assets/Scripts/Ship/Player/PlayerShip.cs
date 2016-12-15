@@ -4,7 +4,7 @@ using SpaceLeague.CameraShake;
 
 namespace SpaceLeague.Ship.Player
 {
-    public class PlayerShip : Ship 
+    public class PlayerShip : AbstractShip 
     {    
         [SerializeField] private RectTransform aimUI;
         [HideInInspector] public float aimSensibility = 1f;
@@ -14,10 +14,10 @@ namespace SpaceLeague.Ship.Player
         private void Start()
         {
             #if !UNITY_EDITOR
-            aimSensibility /= 90f;
+            aimSensibility /= 100f;
             #endif
 
-            Init(movementSpeed, 0.7f, shipCamera);
+            Init(movementSpeed, 0.75f, shipCamera);
         }
 
         public void Init(float aimSensibility, float movementSpeed, float rotationAngleStepPercentage, Transform shipCamera = null)
@@ -29,7 +29,6 @@ namespace SpaceLeague.Ship.Player
         protected override void Update()
         {
             base.Update();
-
             PositionAimUI();
 
             #if PLAYER_SHIP_LOG

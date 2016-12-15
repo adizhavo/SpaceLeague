@@ -11,8 +11,6 @@ namespace SpaceLeague.Ship.Player.Inputs
         [SerializeField] private PlayerShip playerShip;
         [SerializeField] private ShipMainCannon mainWeapon;
 
-        public Transform target;
-
     	private void Update () 
         {
             UpdateControls();
@@ -28,6 +26,10 @@ namespace SpaceLeague.Ship.Player.Inputs
             else { }
              
             if (Input.GetKey(KeyCode.Space)) mainWeapon.OpenFire();
+
+            #if UNITY_EDITOR
+            if (Input.GetKey(KeyCode.Tab) && playerShip.IsReadyForDogFight) playerShip.EnterDogFight();
+            #endif
             #else
             MapTouches(); 
             if (fireTouchIndex != -1) mainWeapon.OpenFire();

@@ -6,7 +6,7 @@ namespace SpaceLeague.Ship.Weapon
 {
     public class ShipMainCannon : MonoBehaviour
     {
-        [SerializeField] protected Ship ship;
+        [SerializeField] protected AbstractShip ship;
         [SerializeField] protected float fireRate;
         [SerializeField] [Range(0f, 10f)] protected float accuracy;
         [SerializeField] protected Transform weaponPivot;
