@@ -5,7 +5,8 @@ namespace SpaceLeague.Ship
 {
     public static class ShipConfig
     {
-        public const float MaxAimDirectionMagnitude = 1f;
+        public const float MaxAimDirectionMagnitude = 15f;
+        public const float MaxMoveDirectionMagnitude = 1f;
         public const float DirectionResetSpeed = 3f;
         public const float ShipFieldOfView = 100f;
 

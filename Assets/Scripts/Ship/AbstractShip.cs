@@ -18,6 +18,8 @@ namespace SpaceLeague.Ship
         [SerializeField] protected float dogFightPointsPerHit;
 
         [HideInInspector] public Vector2 localMoveDirection;
+        [HideInInspector] public Vector2 localAimDirection;
+
         [HideInInspector] public bool IsReadyForDogFight
         {
             get { return currentDogFightFiller + Mathf.Epsilon >= maxDogFightFiller && IsPositionedForDogFight && ShipToDogFight != null; }
@@ -30,16 +32,30 @@ namespace SpaceLeague.Ship
         [HideInInspector] public bool IsPositionedForDogFight = false;
         [HideInInspector] public Transform ShipToDogFight;
 
-
         private float currentCameraDistance;
         private Vector3 currentCameraOffset;
         private float dogFightTimeElapse = 0f;
+
+        public Vector3 ShootingDirection
+        {
+            get
+            {
+                if (currentFlyMode.Equals(ShipFlyMode.DogFight)) 
+                {
+                    localAimDirection = Vector3.ClampMagnitude(localAimDirection, ShipConfig.MaxAimDirectionMagnitude);
+                    return ship.position + Vector3.MoveTowards(ship.forward * ShipConfig.ShipFieldOfView, 
+                        ship.TransformDirection(localAimDirection), 
+                        ShipConfig.ShipFieldOfView * rotationAngleStepPercentage);
+                }
+                else return GlobalDirection;
+            }
+        }
 
         public Vector3 GlobalDirection
         {
             get 
             {
-                localMoveDirection = Vector3.ClampMagnitude(localMoveDirection, ShipConfig.MaxAimDirectionMagnitude);
+                localMoveDirection = Vector2.ClampMagnitude(localMoveDirection, ShipConfig.MaxMoveDirectionMagnitude);
                 return ship.position + Vector3.MoveTowards(
                     ship.forward * ShipConfig.ShipFieldOfView, 
                     ship.TransformDirection(localMoveDirection), 
@@ -82,7 +98,7 @@ namespace SpaceLeague.Ship
             int sign = -1 * (int)Mathf.Sign(localMoveDirection.x);
             float currentAngle = shipRender.localEulerAngles.z;
             if (currentAngle > 180f) currentAngle -= 360f;
-            float rotationPercentage = Mathf.Abs(localMoveDirection.x) / ShipConfig.MaxAimDirectionMagnitude;
+            float rotationPercentage = Mathf.Abs(localMoveDirection.x) / ShipConfig.MaxMoveDirectionMagnitude;
             float lerpedAngle = Mathf.Lerp(0f, ShipConfig.RenderMaxRotationAngle * sign, rotationPercentage);
             shipRender.localEulerAngles = new Vector3(0f, 0f, lerpedAngle);
         }

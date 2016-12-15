@@ -29,7 +29,7 @@ namespace SpaceLeague.Ship.Weapon
             Transform bullet = PoolProvider.Instance.RequestGameObject(PooledObject.Bullet).transform;
             bullet.position = weaponPivot.position;
             Vector3 offset = Random.onUnitSphere * (10f - accuracy);
-            bullet.LookAt(ship.GlobalDirection + offset, weaponPivot.up);
+            bullet.LookAt(ship.ShootingDirection + offset, weaponPivot.up);
             bullet.GetComponent<Bullet>().fireSource = ship.transform;
             timeCounter = 0f;
         }

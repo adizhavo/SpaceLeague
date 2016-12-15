@@ -15,6 +15,8 @@ namespace SpaceLeague.UI
         private void Start()
         {
             dogFightButton.onClick.AddListener(TriggerDogFight);
+
+            ReachPlayerShip();
         }
 
         private void Update()

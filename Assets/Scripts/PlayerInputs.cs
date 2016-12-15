@@ -22,19 +22,24 @@ namespace SpaceLeague.Ship.Player.Inputs
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
 
-            if (playerShip.currentFlyMode.Equals(ShipFlyMode.Normal)) playerShip.localMoveDirection =  new Vector3(horizontal, vertical, 0f) * playerShip.aimSensibility;        
-            else { }
-             
-            if (Input.GetKey(KeyCode.Space)) mainWeapon.OpenFire();
+            if (playerShip.currentFlyMode.Equals(ShipFlyMode.Normal)) playerShip.localMoveDirection = new Vector3(horizontal, vertical, 0f) * playerShip.moveSensibility;        
+            else playerShip.localAimDirection = new Vector3(horizontal, vertical, 0f) * playerShip.aimSensibility * ShipConfig.MaxAimDirectionMagnitude;
 
-            #if UNITY_EDITOR
+            if (Input.GetKey(KeyCode.Space)) mainWeapon.OpenFire();
             if (Input.GetKey(KeyCode.Tab) && playerShip.IsReadyForDogFight) playerShip.EnterDogFight();
-            #endif
+
             #else
             MapTouches(); 
             if (fireTouchIndex != -1) mainWeapon.OpenFire();
-            if (touchPadIndex != -1) playerShip.localMoveDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.aimSensibility;
-            else playerShip.localMoveDirection = Vector2.Lerp(playerShip.localMoveDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
+            if (touchPadIndex != -1 && playerShip.currentFlyMode.Equals(ShipFlyMode.Normal)) 
+                playerShip.localMoveDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.moveSensibility * Time.deltaTime;
+            else if (touchPadIndex != -1) 
+                playerShip.localAimDirection += Input.GetTouch(touchPadIndex).deltaPosition * playerShip.aimSensibility * Time.deltaTime;
+            else 
+            {
+                playerShip.localMoveDirection = Vector2.Lerp(playerShip.localMoveDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
+                playerShip.localAimDirection = Vector2.Lerp(playerShip.localAimDirection, Vector2.zero, Time.deltaTime * ShipConfig.DirectionResetSpeed);
+            }
             #endif
         }
 

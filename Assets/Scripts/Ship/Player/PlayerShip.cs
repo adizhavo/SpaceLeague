@@ -7,14 +7,19 @@ namespace SpaceLeague.Ship.Player
     public class PlayerShip : AbstractShip 
     {    
         [SerializeField] private RectTransform aimUI;
-        [HideInInspector] public float aimSensibility = 1f;
+        [HideInInspector] public float moveSensibility;
+        [HideInInspector] public float aimSensibility;
 
         public Transform targetShip;
 
         private void Start()
         {
             #if !UNITY_EDITOR
-            aimSensibility /= 100f;
+            moveSensibility = 0.5f;
+            aimSensibility = 10f;
+            #else
+            moveSensibility = 1f;
+            aimSensibility = 1f;
             #endif
 
             Init(movementSpeed, 0.75f, shipCamera);
@@ -22,7 +27,7 @@ namespace SpaceLeague.Ship.Player
 
         public void Init(float aimSensibility, float movementSpeed, float rotationAngleStepPercentage, Transform shipCamera = null)
         {
-            this.aimSensibility = aimSensibility > 0f ? aimSensibility : 0f;
+            this.moveSensibility = aimSensibility > 0f ? aimSensibility : 0f;
             base.Init(movementSpeed, rotationAngleStepPercentage, shipCamera);
         }
 
@@ -45,7 +50,7 @@ namespace SpaceLeague.Ship.Player
 
         private void PositionAimUI()
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(GlobalDirection);
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(ShootingDirection);
             aimUI.position = screenPos;
         }
 
