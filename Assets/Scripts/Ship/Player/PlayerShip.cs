@@ -4,32 +4,36 @@ using SpaceLeague.CameraShake;
 
 namespace SpaceLeague.Ship.Player
 {
-    public class PlayerShip : Ship 
+    public class PlayerShip : AbstractShip 
     {    
-        [SerializeField] private RectTransform AimUI;
-        [HideInInspector] public float AimSensibility = 1f;
+        [SerializeField] private RectTransform aimUI;
+        [HideInInspector] public float moveSensibility;
+        [HideInInspector] public float aimSensibility;
 
         public Transform targetShip;
 
         private void Start()
         {
             #if !UNITY_EDITOR
-            AimSensibility /= 80f;
+            moveSensibility = 0.5f;
+            aimSensibility = 10f;
+            #else
+            moveSensibility = 1f;
+            aimSensibility = 1f;
             #endif
 
-            Init(movementSpeed, 0.7f, shipCamera);
+            Init(movementSpeed, 0.75f, shipCamera);
         }
 
         public void Init(float aimSensibility, float movementSpeed, float rotationAngleStepPercentage, Transform shipCamera = null)
         {
-            this.AimSensibility = aimSensibility > 0f ? aimSensibility : 0f;
+            this.moveSensibility = aimSensibility > 0f ? aimSensibility : 0f;
             base.Init(movementSpeed, rotationAngleStepPercentage, shipCamera);
         }
 
         protected override void Update()
         {
             base.Update();
-
             PositionAimUI();
 
             #if PLAYER_SHIP_LOG
@@ -46,8 +50,8 @@ namespace SpaceLeague.Ship.Player
 
         private void PositionAimUI()
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(GlobalDirection);
-            AimUI.position = screenPos;
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(ShootingDirection);
+            aimUI.position = screenPos;
         }
 
         public override void Damaged(Transform attackingShip, float damage)

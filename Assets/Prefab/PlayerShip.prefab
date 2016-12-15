@@ -672,9 +672,15 @@ MonoBehaviour:
   shipRender: {fileID: 4001477505460448}
   shipCamera: {fileID: 0}
   movementSpeed: 12
-  AimDirection: {x: 0, y: 0}
-  AimUI: {fileID: 0}
-  AimSensibility: 1
+  maxDogFightFiller: 10
+  dogFightPointsPerHit: 3
+  localMoveDirection: {x: 0, y: 0}
+  currentDogFightFiller: 0
+  currentFlyMode: 0
+  IsPositionedForDogFight: 0
+  ShipToDogFight: {fileID: 0}
+  aimUI: {fileID: 0}
+  aimSensibility: 1
   targetShip: {fileID: 0}
 --- !u!114 &114278220478307228
 MonoBehaviour:
@@ -689,7 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 114265231763633532}
   fireRate: 0.05
-  accuracy: 9
+  accuracy: 9.5
   weaponPivot: {fileID: 4627499236092550}
 --- !u!114 &114349773545000274
 MonoBehaviour:

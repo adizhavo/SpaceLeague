@@ -56,8 +56,12 @@ namespace SpaceLeague.Ship.Weapon
         {
             if (fireSource != null && tr.Equals(fireSource)) return;
 
-            Ship s = tr.GetComponent<Ship>();
-            if (s != null) s.Damaged(fireSource, damage);
+            AbstractShip s = tr.GetComponent<AbstractShip>();
+            if (s != null)
+            {
+                s.Damaged(fireSource, damage);
+                fireSource.GetComponent<AbstractShip>().AddDogFightPoints();
+            }
 
             PoolProvider.Instance.RequestGameObject(PooledObject.Sparks).transform.position = transform.position;
 

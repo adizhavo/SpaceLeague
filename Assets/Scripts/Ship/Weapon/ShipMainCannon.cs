@@ -6,7 +6,7 @@ namespace SpaceLeague.Ship.Weapon
 {
     public class ShipMainCannon : MonoBehaviour
     {
-        [SerializeField] protected Ship ship;
+        [SerializeField] protected AbstractShip ship;
         [SerializeField] protected float fireRate;
         [SerializeField] [Range(0f, 10f)] protected float accuracy;
         [SerializeField] protected Transform weaponPivot;
@@ -29,7 +29,7 @@ namespace SpaceLeague.Ship.Weapon
             Transform bullet = PoolProvider.Instance.RequestGameObject(PooledObject.Bullet).transform;
             bullet.position = weaponPivot.position;
             Vector3 offset = Random.onUnitSphere * (10f - accuracy);
-            bullet.LookAt(ship.GlobalDirection + offset, weaponPivot.up);
+            bullet.LookAt(ship.ShootingDirection + offset, weaponPivot.up);
             bullet.GetComponent<Bullet>().fireSource = ship.transform;
             timeCounter = 0f;
         }

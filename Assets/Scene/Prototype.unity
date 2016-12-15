@@ -130,9 +130,77 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: shipCamera
+      value: 
+      objectReference: {fileID: 1487812737}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &162439805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 162439806}
+  - component: {fileID: 162439808}
+  - component: {fileID: 162439807}
+  m_Layer: 5
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &162439806
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162439805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 797811607}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &162439807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162439805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &162439808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162439805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
 --- !u!1001 &228652958
 Prefab:
   m_ObjectHideFlags: 0
@@ -182,7 +250,18 @@ Prefab:
       propertyPath: movementSpeed
       value: 12
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &244639669
@@ -334,7 +413,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.178
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &339782325
@@ -414,7 +504,18 @@ Prefab:
       propertyPath: m_Name
       value: EnemyShip
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &367397207
@@ -498,7 +599,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.178
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &375000921
@@ -578,7 +690,18 @@ Prefab:
       propertyPath: accuracy
       value: 8.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &404783472
@@ -827,7 +950,18 @@ Prefab:
       propertyPath: battleTime.y
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &641190747
@@ -869,47 +1003,134 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1262093523543670, guid: 36939d2e72d36401fac735097875936a, type: 2}
-      propertyPath: m_Name
-      value: EnemyShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 114480734033440662, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: accuracy
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: movementSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262093523543670, guid: 36939d2e72d36401fac735097875936a, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: freeRoamingTime.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: freeRoamingTime.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: battleTime.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: battleTime.y
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &753375270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 753375271}
+  - component: {fileID: 753375274}
+  - component: {fileID: 753375273}
+  - component: {fileID: 753375272}
+  - component: {fileID: 753375275}
+  m_Layer: 5
+  m_Name: DogFight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &753375271
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753375270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1374477395}
+  m_Father: {fileID: 797811607}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 9.1858965e-11, y: 17.900024}
+  m_SizeDelta: {x: 256, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &753375272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753375270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 753375273}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &753375273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753375270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &753375274
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753375270}
+--- !u!114 &753375275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 753375270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2f64a3ce21b43478c9657f22e3f717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dogFightFiller: {fileID: 753375273}
+  dogFightButton: {fileID: 753375272}
 --- !u!1 &797811603
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1216,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1650380591}
+  - {fileID: 753375271}
+  - {fileID: 162439806}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1084,7 +1307,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.178
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &858882086
@@ -1125,44 +1359,6 @@ Prefab:
     - target: {fileID: 4633372886941390, guid: 36939d2e72d36401fac735097875936a, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: movementSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114480734033440662, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: accuracy
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262093523543670, guid: 36939d2e72d36401fac735097875936a, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: freeRoamingTime.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: freeRoamingTime.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: battleTime.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: battleTime.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262093523543670, guid: 36939d2e72d36401fac735097875936a, type: 2}
-      propertyPath: m_Name
-      value: EnemyShip
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
@@ -1248,7 +1444,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.178
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &901871820
@@ -1332,7 +1539,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.178
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &934529562
@@ -1412,7 +1630,18 @@ Prefab:
       propertyPath: m_Name
       value: EnemyShip
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1010594325
@@ -1461,9 +1690,9 @@ Prefab:
       objectReference: {fileID: 1487812737}
     - target: {fileID: 114265231763633532, guid: 78548581a6db1450bad08e6b9cb823b5,
         type: 2}
-      propertyPath: AimUI
+      propertyPath: aimUI
       value: 
-      objectReference: {fileID: 244639670}
+      objectReference: {fileID: 1650380591}
     - target: {fileID: 114265231763633532, guid: 78548581a6db1450bad08e6b9cb823b5,
         type: 2}
       propertyPath: targetShip
@@ -1549,9 +1778,94 @@ Prefab:
       propertyPath: battleTime.y
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1374477394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1374477395}
+  - component: {fileID: 1374477397}
+  - component: {fileID: 1374477396}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1374477395
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374477394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 753375271}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1374477396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374477394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 23
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Dog fight mode
+--- !u!222 &1374477397
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374477394}
 --- !u!1 &1487812736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,8 +1887,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1487812736}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -400}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437973684}
@@ -1658,7 +1972,18 @@ Prefab:
       propertyPath: accuracy
       value: 8.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1558456671
@@ -1742,7 +2067,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.6980004
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1650380590
@@ -1860,7 +2196,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 80.87601
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1762903987
@@ -1936,7 +2283,18 @@ Prefab:
       propertyPath: accuracy
       value: 8.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1798063451 stripped
@@ -2025,7 +2383,18 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -75.178
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1993719133
@@ -2176,6 +2545,17 @@ Prefab:
       propertyPath: accuracy
       value: 8.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
