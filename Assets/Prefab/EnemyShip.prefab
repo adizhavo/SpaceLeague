@@ -642,8 +642,11 @@ MonoBehaviour:
   movementSpeed: 12
   maxDogFightFiller: 1
   dogFightPointsPerHit: 0.1
-  LocalMoveDirection: {x: 0, y: 0}
-  currentFightMode: 0
+  localMoveDirection: {x: 0, y: 0}
+  currentDogFightFiller: 0
+  currentFlyMode: 0
+  IsPositionedForDogFight: 0
+  ShipToDogFight: {fileID: 0}
   distanceFromPlayer: {x: 100, y: 150}
   freeRoamingTime: {x: 5, y: 20}
   journeyTime: {x: 5, y: 15}

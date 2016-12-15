@@ -676,7 +676,7 @@ MonoBehaviour:
   dogFightPointsPerHit: 3
   localMoveDirection: {x: 0, y: 0}
   currentDogFightFiller: 0
-  currentFightMode: 0
+  currentFlyMode: 0
   IsPositionedForDogFight: 0
   ShipToDogFight: {fileID: 0}
   aimUI: {fileID: 0}
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 114265231763633532}
   fireRate: 0.05
-  accuracy: 9
+  accuracy: 9.5
   weaponPivot: {fileID: 4627499236092550}
 --- !u!114 &114349773545000274
 MonoBehaviour:
@@ -710,7 +710,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShip: {fileID: 114265231763633532}
   mainWeapon: {fileID: 114278220478307228}
-  target: {fileID: 0}
 --- !u!198 &198748913062300814
 ParticleSystem:
   m_ObjectHideFlags: 1
