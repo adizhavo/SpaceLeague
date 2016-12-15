@@ -27,10 +27,6 @@ namespace SpaceLeague.UI
 
             dogFightFiller.fillAmount = playerShip.currentDogFightFiller / playerShip.maxDogFightFiller;
             dogFightButton.interactable = playerShip.IsReadyForDogFight || playerShip.currentFlyMode.Equals(ShipFlyMode.DogFight);
-
-            #if UNITY_EDITOR
-            if (playerShip.IsReadyForDogFight) playerShip.EnterDogFight();
-            #endif
         }
 
         private void ReachPlayerShip()
