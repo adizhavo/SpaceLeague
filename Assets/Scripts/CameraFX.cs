@@ -37,7 +37,7 @@ namespace SpaceLeague
 
         public void Apply()
         {
-            int amount = Random.Range(1, DirtPiece.Length);
+            int amount = Random.Range(Random.Range(1, 3), DirtPiece.Length);
 
             for (int i = 0; i < amount; i++)
             {
@@ -46,12 +46,19 @@ namespace SpaceLeague
                 if (dirt == null)
                     return;
 
-                LeanTween.alpha(dirt, 1f, 0.1f).setDelay(Random.Range(0f, 1f)).setOnComplete(
+                Vector3 localPos = dirt.localPosition;
+
+                LeanTween.alpha(dirt, 1f, 0.1f).setDelay(Random.Range(0f, 0.3f)).setOnComplete(
                     () =>
                     {
-                        LeanTween.alpha(dirt, 0f, Random.Range(0.7f, 3f)).setOnComplete(
+                        float time = Random.Range(0.7f, 1.5f);
+                        LeanTween.moveLocal(dirt.gameObject, dirt.localPosition + localPos * 0.1f, time);
+                        LeanTween.scale(dirt.gameObject, Vector3.one * 1.3f, time);
+                        LeanTween.alpha(dirt, 0f, time).setOnComplete(
                             () =>
                             {
+                                dirt.localPosition = localPos;
+                                dirt.localScale = Vector3.one;
                                 dirt.gameObject.SetActive(false);
                             }
                         );
@@ -85,10 +92,10 @@ namespace SpaceLeague
             if (hit == null)
                 return;
 
-            LeanTween.alpha(hit, 1f, 0.1f).setDelay(Random.Range(0f, 1f)).setOnComplete(
+            LeanTween.alpha(hit, 1f, 0.1f).setOnComplete(
                 () =>
                 {
-                    LeanTween.alpha(hit, 0f, Random.Range(0.7f, 3f)).setOnComplete(
+                    LeanTween.alpha(hit, 0f, Random.Range(0.7f, 2f)).setOnComplete(
                         () =>
                         {
                             hit.gameObject.SetActive(false);
