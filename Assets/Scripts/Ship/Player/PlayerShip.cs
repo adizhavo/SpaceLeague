@@ -56,7 +56,7 @@ namespace SpaceLeague.Ship.Player
 
         public override void Damage(Transform attackingShip, float damage)
         {
-            
+            base.Damage(attackingShip, damage);
 
             #if UNITY_EDITOR
             Debug.Log("Player damaged by " + attackingShip.name);
