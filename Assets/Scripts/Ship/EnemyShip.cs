@@ -112,7 +112,7 @@ namespace SpaceLeague.Ship.Enemy
                 }
 
                 battleTickCounter += Time.deltaTime / pickedBattleTime;
-                if (battleTickCounter > 1f) EnterFreeRoamingMode();
+                if (battleTickCounter > 1f || !targetShip.gameObject.activeSelf) EnterFreeRoamingMode();
             }
         }
 

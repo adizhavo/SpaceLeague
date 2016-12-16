@@ -120,16 +120,19 @@ namespace SpaceLeague.Ship
         {
             if (shipCamera == null) return;
 
+
+            Vector3 positionOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? Vector3.zero : ship.InverseTransformDirection(Vector3.ProjectOnPlane(ShipToDogFight.position - ship.position, ship.forward));
+            Vector3 targetOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset;
+            targetOffset.x *= Mathf.Sign(positionOffset.x);
+            targetOffset.y *= Mathf.Sign(positionOffset.y);
+
+
             currentCameraDistance = Mathf.Lerp(currentCameraDistance, 
                 currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraDistance : ShipConfig.DogFightCameraDistance,
                 Time.deltaTime * 3f);
             currentCameraOffset = Vector3.Lerp(currentCameraOffset, 
-                currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset,
+                targetOffset,
                 Time.deltaTime * 3f);
-
-            Vector3 positionOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? Vector3.zero : ship.InverseTransformDirection(Vector3.ProjectOnPlane(ShipToDogFight.position - ship.position, ship.forward));
-            currentCameraOffset.x *= Mathf.Sign(positionOffset.x);
-            currentCameraOffset.y *= Mathf.Sign(positionOffset.y);
 
             shipCamera.position = Vector3.Lerp(
                 shipCamera.position,
@@ -202,13 +205,17 @@ namespace SpaceLeague.Ship
             else if (currentHealth < maxHealth * .3f) damageSmoke.SetActive(true);
         }
 
-        protected void Destroy()
+        protected virtual void Destroy()
         {
             damageSmoke.SetActive(false);
+            gameObject.SetActive(false);
+
             PoolProvider.Instance.RequestGameObject(PooledObject.Explosion).transform.position = ship.position;
             PoolProvider.Instance.RequestGameObject(PooledObject.DirtZone).transform.position = ship.position;
+
+            LeanTween.delayedCall(5f, ()=>{ gameObject.SetActive(true); });
+
             Awake();
-            gameObject.SetActive(false);
         }
     }
 }
