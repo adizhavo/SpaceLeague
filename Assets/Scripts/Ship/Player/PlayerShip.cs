@@ -63,6 +63,8 @@ namespace SpaceLeague.Ship.Player
             #if UNITY_EDITOR
             Debug.Log("Player damaged by " + attackingShip.name);
             #endif
+
+            CameraFX.instance.ShowHit();
             CameraShakeProvider.Instance.StartShake(ShakeType.Hit);
         }
 
