@@ -31,21 +31,26 @@ namespace SpaceLeague
 
         public void Apply()
         {
-            RectTransform dirt = GetPiece();
+            int amount = Random.Range(0, DirtPiece.Length);
 
-            if (dirt == null) return;
+            for (int i = 0; i < amount; i ++)
+            {
+                RectTransform dirt = GetPiece();
 
-            LeanTween.alpha(dirt, 1f, 0.1f).setDelay(Random.Range(0f, 0.5f)).setOnComplete(
-                ()=>
-                {
-                    LeanTween.alpha(dirt, 0f, 1f).setOnComplete(
-                        ()=>
-                        {
-                            dirt.gameObject.SetActive(false);
-                        }
-                    );
-                }
-            );
+                if (dirt == null) return;
+
+                LeanTween.alpha(dirt, 1f, 0.1f).setDelay(Random.Range(0f, 0.5f)).setOnComplete(
+                    ()=>
+                    {
+                        LeanTween.alpha(dirt, 0f, 1f).setOnComplete(
+                            ()=>
+                            {
+                                dirt.gameObject.SetActive(false);
+                            }
+                        );
+                    }
+                );
+            }
         }
 
         private RectTransform GetPiece()

@@ -66,9 +66,8 @@ namespace SpaceLeague.Ship.Player
 
         private void OnTriggerStay(Collider other) 
         {
-            Debug.Log("sample");
-
             CameraFX.instance.AddDirt();
+            other.gameObject.SetActive(false);
         }
     }
 }
