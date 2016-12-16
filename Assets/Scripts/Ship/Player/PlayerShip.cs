@@ -22,6 +22,8 @@ namespace SpaceLeague.Ship.Player
             aimSensibility = 1f;
             #endif
 
+            aimUI = GameObject.FindGameObjectWithTag("PlayerHUD").GetComponent<RectTransform>();
+            shipCamera = GameObject.FindGameObjectWithTag("MainCameraContainer").transform;
             Init(movementSpeed, 0.75f, shipCamera);
         }
 

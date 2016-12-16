@@ -31,7 +31,7 @@ namespace SpaceLeague
 
         public void Apply()
         {
-            int amount = Random.Range(0, DirtPiece.Length);
+            int amount = Random.Range(1, DirtPiece.Length);
 
             for (int i = 0; i < amount; i ++)
             {
@@ -39,10 +39,10 @@ namespace SpaceLeague
 
                 if (dirt == null) return;
 
-                LeanTween.alpha(dirt, 1f, 0.1f).setDelay(Random.Range(0f, 0.5f)).setOnComplete(
+                LeanTween.alpha(dirt, 1f, 0.1f).setDelay(Random.Range(0f, 1f)).setOnComplete(
                     ()=>
                     {
-                        LeanTween.alpha(dirt, 0f, 1f).setOnComplete(
+                        LeanTween.alpha(dirt, 0f, Random.Range(0.7f, 3f)).setOnComplete(
                             ()=>
                             {
                                 dirt.gameObject.SetActive(false);

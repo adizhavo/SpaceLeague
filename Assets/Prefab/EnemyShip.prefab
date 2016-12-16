@@ -682,9 +682,9 @@ MonoBehaviour:
   IsPositionedForDogFight: 0
   ShipToDogFight: {fileID: 0}
   distanceFromPlayer: {x: 100, y: 150}
-  freeRoamingTime: {x: 5, y: 20}
-  journeyTime: {x: 5, y: 15}
-  battleTime: {x: 10, y: 20}
+  freeRoamingTime: {x: 3, y: 6}
+  journeyTime: {x: 2, y: 6}
+  battleTime: {x: 15, y: 25}
   mainCannon: {fileID: 114480734033440662}
 --- !u!114 &114480734033440662
 MonoBehaviour:
