@@ -34,7 +34,7 @@ namespace SpaceLeague.Ship
         protected float rotationAngleStepPercentage = 0.6f;
         [HideInInspector] public float currentDogFightFiller = 0;
 
-        [HideInInspector] public ShipFlyMode currentFlyMode;
+         public ShipFlyMode currentFlyMode;
         [HideInInspector] public bool IsPositionedForDogFight = false;
         [HideInInspector] public Transform ShipToDogFight;
 
@@ -160,15 +160,15 @@ namespace SpaceLeague.Ship
         {
             if (currentFlyMode.Equals(ShipFlyMode.DogFight) && ShipToDogFight != null)
             {
-                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance), 5f);
-
                 dogFightTimeElapse += Time.deltaTime;
                 currentDogFightFiller = maxDogFightFiller - dogFightTimeElapse;
-                if (currentDogFightFiller < 0)
+                if (currentDogFightFiller < 0 || !ShipToDogFight.gameObject.activeSelf)
                 {
                     currentDogFightFiller = 0f;
                     ExitDogFightMode();
                 }
+
+                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance), 5f);
             }
             else
             {
@@ -207,6 +207,7 @@ namespace SpaceLeague.Ship
             damageSmoke.SetActive(false);
             PoolProvider.Instance.RequestGameObject(PooledObject.Explosion).transform.position = ship.position;
             Awake();
+            gameObject.SetActive(false);
         }
     }
 }
