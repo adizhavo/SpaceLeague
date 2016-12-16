@@ -28,3 +28,7 @@ MonoBehaviour:
     Object: 3
     prefab: {fileID: 1797706946019062, guid: 10a56f8e44d704028805f418fa4a0eb1, type: 2}
     size: 5
+  - PoolName: DirstZone
+    Object: 4
+    prefab: {fileID: 1286330006278512, guid: 45e9c6a6ea3464bc4b9c7b7437ad42fb, type: 2}
+    size: 5

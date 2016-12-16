@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SpaceLeague.Pooling;
 
 namespace SpaceLeague.Ship
 {
@@ -16,6 +17,11 @@ namespace SpaceLeague.Ship
         [SerializeField] protected float movementSpeed;
         [SerializeField] public float maxDogFightFiller;
         [SerializeField] protected float dogFightPointsPerHit;
+        [SerializeField] protected float maxHealth;
+
+        [SerializeField] private GameObject damageSmoke;
+
+        protected float currentHealth;
 
         [HideInInspector] public Vector2 localMoveDirection;
         [HideInInspector] public Vector2 localAimDirection;
@@ -28,7 +34,7 @@ namespace SpaceLeague.Ship
         protected float rotationAngleStepPercentage = 0.6f;
         [HideInInspector] public float currentDogFightFiller = 0;
 
-        [HideInInspector] public ShipFlyMode currentFlyMode;
+         public ShipFlyMode currentFlyMode;
         [HideInInspector] public bool IsPositionedForDogFight = false;
         [HideInInspector] public Transform ShipToDogFight;
 
@@ -68,6 +74,8 @@ namespace SpaceLeague.Ship
             currentFlyMode = ShipFlyMode.Normal;
             currentCameraOffset = ShipConfig.CameraPositionOffset;
             currentCameraDistance = ShipConfig.CameraDistance;
+
+            currentHealth = maxHealth;
         }
 
         private void OnEnable()
@@ -112,16 +120,19 @@ namespace SpaceLeague.Ship
         {
             if (shipCamera == null) return;
 
+
+            Vector3 positionOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? Vector3.zero : ship.InverseTransformDirection(Vector3.ProjectOnPlane(ShipToDogFight.position - ship.position, ship.forward));
+            Vector3 targetOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset;
+            targetOffset.x *= Mathf.Sign(positionOffset.x);
+            targetOffset.y *= Mathf.Sign(positionOffset.y);
+
+
             currentCameraDistance = Mathf.Lerp(currentCameraDistance, 
                 currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraDistance : ShipConfig.DogFightCameraDistance,
                 Time.deltaTime * 3f);
             currentCameraOffset = Vector3.Lerp(currentCameraOffset, 
-                currentFlyMode.Equals(ShipFlyMode.Normal) ? ShipConfig.CameraPositionOffset : ShipConfig.DogFightCameraPositionOffset,
+                targetOffset,
                 Time.deltaTime * 3f);
-
-            Vector3 positionOffset = currentFlyMode.Equals(ShipFlyMode.Normal) ? Vector3.zero : ship.InverseTransformDirection(Vector3.ProjectOnPlane(ShipToDogFight.position - ship.position, ship.forward));
-            currentCameraOffset.x *= Mathf.Sign(positionOffset.x);
-            currentCameraOffset.y *= Mathf.Sign(positionOffset.y);
 
             shipCamera.position = Vector3.Lerp(
                 shipCamera.position,
@@ -152,15 +163,15 @@ namespace SpaceLeague.Ship
         {
             if (currentFlyMode.Equals(ShipFlyMode.DogFight) && ShipToDogFight != null)
             {
-                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance), 5f);
-
                 dogFightTimeElapse += Time.deltaTime;
                 currentDogFightFiller = maxDogFightFiller - dogFightTimeElapse;
-                if (currentDogFightFiller < 0)
+                if (currentDogFightFiller < 0 || !ShipToDogFight.gameObject.activeSelf)
                 {
                     currentDogFightFiller = 0f;
                     ExitDogFightMode();
                 }
+
+                CalculateAimDirection(ShipToDogFight.position + (-1 * ShipToDogFight.forward *  ShipConfig.DogFightDistance), 5f);
             }
             else
             {
@@ -187,6 +198,24 @@ namespace SpaceLeague.Ship
             if (currentDogFightFiller > maxDogFightFiller) currentDogFightFiller = maxDogFightFiller;
         }
 
-        public abstract void Damaged(Transform attackingShip, float damage);
+        public virtual void Damage(Transform attackingShip, float damage)
+        {
+            currentHealth -= damage;
+            if (currentHealth < 0f) Destroy();
+            else if (currentHealth < maxHealth * .3f) damageSmoke.SetActive(true);
+        }
+
+        protected virtual void Destroy()
+        {
+            damageSmoke.SetActive(false);
+            gameObject.SetActive(false);
+
+            PoolProvider.Instance.RequestGameObject(PooledObject.Explosion).transform.position = ship.position;
+            PoolProvider.Instance.RequestGameObject(PooledObject.DirtZone).transform.position = ship.position;
+
+            LeanTween.delayedCall(5f, ()=>{ gameObject.SetActive(true); });
+
+            Awake();
+        }
     }
 }

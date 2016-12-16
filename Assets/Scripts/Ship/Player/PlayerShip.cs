@@ -22,6 +22,8 @@ namespace SpaceLeague.Ship.Player
             aimSensibility = 1f;
             #endif
 
+            aimUI = GameObject.FindGameObjectWithTag("PlayerHUD").GetComponent<RectTransform>();
+            shipCamera = GameObject.FindGameObjectWithTag("MainCameraContainer").transform;
             Init(movementSpeed, 0.75f, shipCamera);
         }
 
@@ -54,12 +56,22 @@ namespace SpaceLeague.Ship.Player
             aimUI.position = screenPos;
         }
 
-        public override void Damaged(Transform attackingShip, float damage)
+        public override void Damage(Transform attackingShip, float damage)
         {
+            base.Damage(attackingShip, damage);
+
             #if UNITY_EDITOR
             Debug.Log("Player damaged by " + attackingShip.name);
             #endif
+
+            CameraFX.instance.ShowHit();
             CameraShakeProvider.Instance.StartShake(ShakeType.Hit);
+        }
+
+        private void OnTriggerStay(Collider other) 
+        {
+            CameraFX.instance.AddDirt();
+            other.gameObject.SetActive(false);
         }
     }
 }

@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  movementSpeed: 100
+  movementSpeed: 130
   lifeTime: 5
   fireSource: {fileID: 0}

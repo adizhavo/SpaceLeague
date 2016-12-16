@@ -26,12 +26,12 @@ namespace SpaceLeague.Ship.Enemy
 
         private Transform targetShip;
 
-        private enum FlyModes
+        private enum AIFlyModes
         {
             FreeRoaming,
             Battle
         }
-        private FlyModes currentMode;
+        private AIFlyModes currentMode;
 
         private void Start()
         {
@@ -74,7 +74,7 @@ namespace SpaceLeague.Ship.Enemy
 
         private void UpdateFlyMode()
         {
-            if (targetShip == null) currentMode = FlyModes.FreeRoaming;
+            if (targetShip == null) currentMode = AIFlyModes.FreeRoaming;
         }
 
         private void UpdateTargetPoint()
@@ -85,7 +85,7 @@ namespace SpaceLeague.Ship.Enemy
 
         private void UpdateTimers()
         {
-            if (currentMode.Equals(FlyModes.FreeRoaming))
+            if (currentMode.Equals(AIFlyModes.FreeRoaming))
             {
                 journeyTickCounter += Time.deltaTime / pickedJourneyTime;
                 if (journeyTickCounter > 1f) ChooseJourneyPosition();
@@ -97,10 +97,22 @@ namespace SpaceLeague.Ship.Enemy
                     if (t != null) EnterBattleMode(t);
                 }
             }
-            else if (currentMode.Equals(FlyModes.Battle))
+            else if (currentMode.Equals(AIFlyModes.Battle))
             {
+                if (!base.currentFlyMode.Equals(ShipFlyMode.DogFight) 
+                    && ShipUtils.IsTargetOnSight(targetShip, ship, GlobalDirection) 
+                    && IsReadyForDogFight) 
+                {
+                    #if UNITY_EDITOR
+                    Debug.Log("Enemy enters dog fight mode");
+                    #endif
+
+                    ShipToDogFight = targetShip;
+                    EnterDogFight();
+                }
+
                 battleTickCounter += Time.deltaTime / pickedBattleTime;
-                if (battleTickCounter > 1f) EnterFreeRoamingMode();
+                if (battleTickCounter > 1f || !targetShip.gameObject.activeSelf) EnterFreeRoamingMode();
             }
         }
 
@@ -111,12 +123,15 @@ namespace SpaceLeague.Ship.Enemy
             Debug.DrawLine(transform.position, targetPoint, Color.yellow);
         }
 
-        public override void Damaged(Transform attackingShip, float damage)
+        public override void Damage(Transform attackingShip, float damage)
         {
+            EnterBattleMode(attackingShip);
+
             #if UNITY_EDITOR
             Debug.Log("Enemy damaged by " + attackingShip.name);
             #endif
-            EnterBattleMode(attackingShip);
+
+            base.Damage(attackingShip, damage);
         }
 
         private void EnterFreeRoamingMode()
@@ -126,7 +141,7 @@ namespace SpaceLeague.Ship.Enemy
             #endif
 
             targetShip = null;
-            currentMode = FlyModes.FreeRoaming;
+            currentMode = AIFlyModes.FreeRoaming;
             pickedFreeRoamingTime = Random.Range(freeRoamingTime.x, freeRoamingTime.y);
             freeRoamingTickCounter = 0f;
             ChooseJourneyPosition();
@@ -139,7 +154,7 @@ namespace SpaceLeague.Ship.Enemy
             #endif
 
             targetShip = attackingShip;
-            currentMode = FlyModes.Battle;
+            currentMode = AIFlyModes.Battle;
             pickedBattleTime = Random.Range(battleTime.x, battleTime.y);
             battleTickCounter = 0f;
         }

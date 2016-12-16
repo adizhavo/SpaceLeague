@@ -6,6 +6,7 @@ namespace SpaceLeague.Pooling
     	Bullet = 0,
         Sparks = 1,
         Smoke = 2,
-        Explosion = 3
+        Explosion = 3,
+        DirtZone = 4,
     }
 }
