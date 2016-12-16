@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4564101814746642}
   - component: {fileID: 96580011938443668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4763397331970062}
   - component: {fileID: 96893205868750998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114278220478307228}
   - component: {fileID: 114349773545000274}
   - component: {fileID: 54315946991481796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerShip
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4001477505460448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 33187151940371000}
   - component: {fileID: 65778072987935794}
   - component: {fileID: 23100438118648546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4910931277405100}
   - component: {fileID: 198702447429867950}
   - component: {fileID: 199837221500279266}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 33949933313136336}
   - component: {fileID: 65651652525100224}
   - component: {fileID: 23098925108424308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4627499236092550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 33149325781113538}
   - component: {fileID: 65269780627279334}
   - component: {fileID: 23042040834689714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 4167061797124822}
   - component: {fileID: 198748913062300814}
   - component: {fileID: 199681756806821864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DustStorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

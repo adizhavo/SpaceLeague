@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4809118422028952}
   - component: {fileID: 96943622325255230}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4235986736611386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 33587554737854906}
   - component: {fileID: 65418210262674354}
   - component: {fileID: 23086548817744208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,9 +70,9 @@ GameObject:
   - component: {fileID: 4633372886941390}
   - component: {fileID: 114361996570109780}
   - component: {fileID: 114480734033440662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyShip
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 33048931883892962}
   - component: {fileID: 65639063576447066}
   - component: {fileID: 23483422153660910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 33066058625064606}
   - component: {fileID: 65459922105213208}
   - component: {fileID: 23916002754322788}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4205398480540498}
   - component: {fileID: 198201399720745630}
   - component: {fileID: 199047707362214742}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4470493574939524}
   - component: {fileID: 96169255650665844}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4131043774134068}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ MonoBehaviour:
   shipCamera: {fileID: 0}
   movementSpeed: 12
   maxDogFightFiller: 10
-  dogFightPointsPerHit: 1
+  dogFightPointsPerHit: 4
   maxHealth: 10
   damageSmoke: {fileID: 1470193106781854}
   localMoveDirection: {x: 0, y: 0}
@@ -683,8 +683,8 @@ MonoBehaviour:
   ShipToDogFight: {fileID: 0}
   distanceFromPlayer: {x: 100, y: 150}
   freeRoamingTime: {x: 3, y: 6}
-  journeyTime: {x: 2, y: 6}
-  battleTime: {x: 15, y: 25}
+  journeyTime: {x: 2, y: 4}
+  battleTime: {x: 7, y: 15}
   mainCannon: {fileID: 114480734033440662}
 --- !u!114 &114480734033440662
 MonoBehaviour:
