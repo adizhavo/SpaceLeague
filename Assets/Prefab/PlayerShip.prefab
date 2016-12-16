@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 114265231763633532}
   - component: {fileID: 114278220478307228}
   - component: {fileID: 114349773545000274}
+  - component: {fileID: 54315946991481796}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Player
@@ -432,6 +433,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361537621655168}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54315946991481796
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230913330081968}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65269780627279334
 BoxCollider:
   m_ObjectHideFlags: 1

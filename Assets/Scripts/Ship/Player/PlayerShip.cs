@@ -63,5 +63,12 @@ namespace SpaceLeague.Ship.Player
             #endif
             CameraShakeProvider.Instance.StartShake(ShakeType.Hit);
         }
+
+        private void OnTriggerStay(Collider other) 
+        {
+            Debug.Log("sample");
+
+            CameraFX.instance.AddDirt();
+        }
     }
 }

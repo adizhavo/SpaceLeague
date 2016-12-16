@@ -206,6 +206,7 @@ namespace SpaceLeague.Ship
         {
             damageSmoke.SetActive(false);
             PoolProvider.Instance.RequestGameObject(PooledObject.Explosion).transform.position = ship.position;
+            PoolProvider.Instance.RequestGameObject(PooledObject.DirtZone).transform.position = ship.position;
             Awake();
             gameObject.SetActive(false);
         }
