@@ -239,14 +239,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1262093523543670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65, y: 0, z: 210}
+  m_LocalPosition: {x: 14.108514, y: 0.098306045, z: -92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4235986736611386}
   - {fileID: 4131043774134068}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 80.87601}
 --- !u!4 &4695753864361664
 Transform:
   m_ObjectHideFlags: 1
@@ -671,8 +671,8 @@ MonoBehaviour:
   shipRender: {fileID: 4235986736611386}
   shipCamera: {fileID: 0}
   movementSpeed: 12
-  maxDogFightFiller: 1
-  dogFightPointsPerHit: 0.1
+  maxDogFightFiller: 10
+  dogFightPointsPerHit: 1
   maxHealth: 10
   damageSmoke: {fileID: 1470193106781854}
   localMoveDirection: {x: 0, y: 0}

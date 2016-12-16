@@ -135,6 +135,16 @@ Prefab:
       propertyPath: shipCamera
       value: 
       objectReference: {fileID: 1487812737}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
@@ -252,12 +262,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -415,12 +425,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -506,12 +516,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -601,12 +611,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -692,12 +702,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -888,12 +898,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -937,6 +947,16 @@ Prefab:
     - target: {fileID: 4633372886941390, guid: 36939d2e72d36401fac735097875936a, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
@@ -1245,12 +1265,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1294,6 +1314,16 @@ Prefab:
     - target: {fileID: 4633372886941390, guid: 36939d2e72d36401fac735097875936a, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
@@ -1382,12 +1412,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1477,12 +1507,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1568,12 +1598,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1716,12 +1746,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1910,12 +1940,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2005,12 +2035,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2134,12 +2164,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2182,6 +2212,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4633372886941390, guid: 36939d2e72d36401fac735097875936a, type: 2}
       propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: dogFightPointsPerHit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
+        type: 2}
+      propertyPath: maxDogFightFiller
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2276,12 +2316,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2438,12 +2478,12 @@ Prefab:
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: maxDogFightFiller
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
         type: 2}
       propertyPath: dogFightPointsPerHit
-      value: 0.1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
