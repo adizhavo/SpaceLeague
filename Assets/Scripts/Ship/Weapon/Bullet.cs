@@ -59,7 +59,7 @@ namespace SpaceLeague.Ship.Weapon
             AbstractShip s = tr.GetComponent<AbstractShip>();
             if (s != null)
             {
-                s.Damaged(fireSource, damage);
+                s.Damage(fireSource, damage);
                 fireSource.GetComponent<AbstractShip>().AddDogFightPoints();
             }
 

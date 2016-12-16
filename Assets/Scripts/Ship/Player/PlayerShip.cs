@@ -54,8 +54,10 @@ namespace SpaceLeague.Ship.Player
             aimUI.position = screenPos;
         }
 
-        public override void Damaged(Transform attackingShip, float damage)
+        public override void Damage(Transform attackingShip, float damage)
         {
+            
+
             #if UNITY_EDITOR
             Debug.Log("Player damaged by " + attackingShip.name);
             #endif

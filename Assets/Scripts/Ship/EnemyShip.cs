@@ -111,12 +111,15 @@ namespace SpaceLeague.Ship.Enemy
             Debug.DrawLine(transform.position, targetPoint, Color.yellow);
         }
 
-        public override void Damaged(Transform attackingShip, float damage)
+        public override void Damage(Transform attackingShip, float damage)
         {
+            EnterBattleMode(attackingShip);
+
             #if UNITY_EDITOR
             Debug.Log("Enemy damaged by " + attackingShip.name);
             #endif
-            EnterBattleMode(attackingShip);
+
+            base.Damage(attackingShip, damage);
         }
 
         private void EnterFreeRoamingMode()

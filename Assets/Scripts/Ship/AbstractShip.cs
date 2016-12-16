@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SpaceLeague.Pooling;
 
 namespace SpaceLeague.Ship
 {
@@ -16,6 +17,11 @@ namespace SpaceLeague.Ship
         [SerializeField] protected float movementSpeed;
         [SerializeField] public float maxDogFightFiller;
         [SerializeField] protected float dogFightPointsPerHit;
+        [SerializeField] protected float maxHealth;
+
+        [SerializeField] private GameObject damageSmoke;
+
+        protected float currentHealth;
 
         [HideInInspector] public Vector2 localMoveDirection;
         [HideInInspector] public Vector2 localAimDirection;
@@ -68,6 +74,8 @@ namespace SpaceLeague.Ship
             currentFlyMode = ShipFlyMode.Normal;
             currentCameraOffset = ShipConfig.CameraPositionOffset;
             currentCameraDistance = ShipConfig.CameraDistance;
+
+            currentHealth = maxHealth;
         }
 
         private void OnEnable()
@@ -187,6 +195,18 @@ namespace SpaceLeague.Ship
             if (currentDogFightFiller > maxDogFightFiller) currentDogFightFiller = maxDogFightFiller;
         }
 
-        public abstract void Damaged(Transform attackingShip, float damage);
+        public virtual void Damage(Transform attackingShip, float damage)
+        {
+            currentHealth -= damage;
+            if (currentHealth < 0f) Destroy();
+            else if (currentHealth < maxHealth * .3f) damageSmoke.SetActive(true);
+        }
+
+        protected void Destroy()
+        {
+            damageSmoke.SetActive(false);
+            PoolProvider.Instance.RequestGameObject(PooledObject.Explosion).transform.position = ship.position;
+            Awake();
+        }
     }
 }

@@ -135,8 +135,7 @@ Prefab:
       propertyPath: shipCamera
       value: 
       objectReference: {fileID: 1487812737}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &162439805
@@ -2185,52 +2184,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: freeRoamingTime.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: freeRoamingTime.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: battleTime.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: battleTime.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1262093523543670, guid: 36939d2e72d36401fac735097875936a, type: 2}
-      propertyPath: m_Name
-      value: EnemyShip
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: movementSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114480734033440662, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: accuracy
-      value: 8.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: maxDogFightFiller
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114361996570109780, guid: 36939d2e72d36401fac735097875936a,
-        type: 2}
-      propertyPath: dogFightPointsPerHit
-      value: 0.1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 36939d2e72d36401fac735097875936a, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1798063451 stripped
